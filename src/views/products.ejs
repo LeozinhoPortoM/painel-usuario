@@ -4,38 +4,44 @@
 
         <main id="container">
             <h1>Bem vindo ao painel administrativo</h1>
-            <h2>Lista de usuários</h2>
-            <% if(users.length> 0) { %>
+            <h2>Lista de produtos</h2>
+            <% if(listProducts.length> 0) { %>
                 <div>
                     <table>
                         <thead>
                             <tr>
                                 <th>Nome</th>
-                                <th>Sobrenome</th>
-                                <th>Email</th>
-                                <th>Idade</th>
+                                <th>Preço</th>
+                                <th>Descrição</th>
+                                <th>Preço</th>
+                                <th>Tamanho</th>
                                 <th>Ação</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <% for (let user of users) { %>
+                            <% for (let product of listProducts) { %>
                                 <tr>
                                     <td>
-                                        <%= user.nome %>
+                                        <%= product.nome %>
                                     </td>
                                     <td>
-                                        <%= user.sobrenome %>
+                                        <%= product.preco %>
                                     </td>
                                     <td>
-                                        <%= user.email %>
+                                        <%= product.descricao %>
                                     </td>
                                     <td>
-                                        <%= user.idade %>
+                                        <%= product.preco %>
+                                    </td>
+                                    <td>
+                                        <%= product.tamanho %>
                                     </td>
                                     <td class="table-actions">
-                                        <a href="/user/<%= user.id %>" class="table-link-show" href="">Visualizar</a>
-                                        <a href="/user/edit/<%= user.id %>" class="table-link-edit" href="">Editar</a>
-                                        <a href="/user/delete/<%= user.id %>" class="table-link-delete"
+                                        <a href="/product/<%= product.id %>" class="table-link-show"
+                                            href="">Visualizar</a>
+                                        <a href="/product/edit/<%= product.id %>" class="table-link-edit"
+                                            href="">Editar</a>
+                                        <a href="/product/delete/<%= product.id %>" class="table-link-delete"
                                             href="">Excluir</a>
                                     </td>
                                 </tr>
@@ -44,7 +50,7 @@
                     </table>
                 </div>
                 <% } else { %>
-                    <h2 class="error-alert">Nenhum usuário encontrado!!</h2>
+                    <h2 class="error-alert">Nenhum produto encontrado!!</h2>
                     <% } %>
         </main>
 

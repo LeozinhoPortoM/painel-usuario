@@ -1,14 +1,27 @@
 <%- include("./partials/head") %>
     <%- include("./partials/header") %>
-        <main id="user-create">
-            <h1>Adicionar Usuário</h1>
-            <form action="/user" method="post">
-                <input type="text" name="nome" id="" placeholder="Nome">
-                <input type="text" name="sobrenome" id="" placeholder="Sobrenome">
-                <input type="email" name="email" id="" placeholder="Email">
-                <input type="number" name="idade" id="" placeholder="Idade">
-                <input type="number" name="avatar" id="" placeholder="Número do Avatar">
-                <button type="submit">Adicionar</button>
-            </form>
+        <main id="container">
+            <h1>Bem vindo ao painel administrativo</h1>
+            <h2>Adicionar usuário</h2>
+            <% if(locals.errors){ %>
+                <ul class="error-alert">
+                    <% for(let error in errors){ %>
+                        <li>
+                            <b>
+                                <%= error %>:
+                            </b>
+                            <%= errors[error].msg %>
+                        </li>
+                        <% } %>
+                </ul>
+                <% } %>
+                    <form action="/user/create" method="post" enctype="multipart/form-data">
+                        <input type="text" name="nome" placeholder="Nome" />
+                        <input type="text" name="sobrenome" placeholder="Sobrenome" />
+                        <input type="email" name="email" placeholder="Email" />
+                        <input type="number" name="idade" placeholder="Idade" />
+                        <input type="file" name="avatar" />
+                        <button type="submit">Adicionar</button>
+                    </form>
         </main>
         <%- include("./partials/footer") %>

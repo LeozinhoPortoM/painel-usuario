@@ -1,0 +1,44 @@
+<%- include("./partials/head") %>
+    <%- include("./partials/header") %>
+
+        <main id="container">
+            <h1>Bem vindo ao painel administrativo</h1>
+            <h2>Adicionar produtos</h2>
+
+            <form action="/product/create" method="POST">
+                <label for="nome">Nome do produto</label>
+                <input type="text" name="nome" value="<%= locals.old ? old.nome : null %> " />
+                <% if(locals.errors && errors.nome){ %>
+                    <div class="error-alert">
+                        <%= errors.nome.msg %>
+                    </div>
+                    <% } %>
+                        <label for="descricao">Descrição do produto</label>
+                        <input type="text" name="descricao" value="<%= locals.old ? old.descricao : null %> " />
+                        <% if(locals.errors && errors.descricao){ %>
+                            <div class="error-alert">
+                                <%= errors.descricao.msg %>
+                            </div>
+                            <% } %>
+
+                                <label for="preco">Preço do produto</label>
+                                <input type="number" name="preco" value="<%= locals.old ? old.preco : null %> " />
+                                <% if(locals.errors && errors.preco){ %>
+                                    <div class="error-alert">
+                                        <%= errors.preco.msg %>
+                                    </div>
+                                    <% } %>
+
+                                        <label for="tamanho">Tamanho do produto</label>
+                                        <input type="text" name="tamanho"
+                                            value="<%= locals.old ? old.tamanho : null %> " />
+                                        <% if(locals.errors && errors.tamanho){ %>
+                                            <div class="error-alert">
+                                                <%= errors.tamanho.msg %>
+                                            </div>
+                                            <% } %>
+                                                <button type="submit">Salvar</button>
+            </form>
+        </main>
+
+        <%- include('./partials/footer') %>

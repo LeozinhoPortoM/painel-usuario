@@ -2,9 +2,9 @@
     <%- include("./partials/header")%>
         <main id="container">
             <h1>Bem vindo ao painel administrativo</h1>
-            <h2>Visualizar usuário</h2>
+            <h2>Deletar usuário</h2>
             <% if(locals.user){ %>
-                <div class="caixa">
+                <div>
                     <img src="<%= user.avatar %> " alt="avatar">
                     <span>
                         <%= user.nome %>
@@ -17,6 +17,11 @@
                         <%= user.idade %>
                     </span>
                 </div>
+                <form action="/user/delete/<%= user.id %>?_method=delete" method="post">
+                    <h2>Deseja deletar esse usuário?</h2>
+                    <a href="/user"><button type="button">Não</button></a>
+                    <button type="submit">Sim</button>
+                </form>
                 <% }else {%>
                     <h2 class="error-alert">Usuário não encontrado!</h2>
                     <% } %>
